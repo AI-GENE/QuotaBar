@@ -5,8 +5,8 @@ No compilation required for the downloadable Apple Silicon app.
 
 ## Downloads
 
-- `.dmg`: drag QuotaBar into Applications.
-- `.zip`: alternative application bundle.
+- `QuotaBar.dmg`: drag QuotaBar into Applications.
+- `QuotaBar.zip`: alternative application bundle.
 - `SHA256SUMS.txt`: SHA-256 checksums for both packages.
 
 ## Before installing
@@ -25,6 +25,8 @@ The initial interface is in Chinese.
 - Compact monochrome Claude-left / Codex-right quota badge.
 - Five-hour and weekly details, reset times, refresh and optional launch at login.
 - Original navy app icon with a transparent outer background and Retina icon sizes.
+- Short download filenames and a branded mounted-disk icon. A local Finder custom icon is also applied to the DMG file; ordinary web downloads may discard that file metadata.
+- English project homepage with a separate [简体中文 guide](https://github.com/AI-GENE/QuotaBar/blob/main/README.zh-CN.md).
 - A Claude Code 2.1.303 usage-loading compatibility correction: separate privacy controls replace the previously forced broad traffic restriction, while preserving explicit user overrides.
 - 31 offline tests, release build, bundle signature and packaged-file checks.
 

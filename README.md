@@ -1,12 +1,14 @@
 # QuotaBar
 
+**English** · [简体中文](README.zh-CN.md)
+
 <img src="Assets/QuotaBar.png" width="128" alt="QuotaBar app icon: interlocking ivory and blue gauge rings on midnight navy">
 
 A small, native macOS menu-bar utility for Claude Code and Codex usage limits.
 
 Two monochrome service marks. Two remaining percentages. No dashboard to keep open.
 
-**[Download for Mac — Apple Silicon (.dmg)](https://github.com/AI-GENE/QuotaBar/releases/download/v1.0.0-preview.1/QuotaBar-1.0.0-preview.1-macos-arm64.dmg)** · [ZIP](https://github.com/AI-GENE/QuotaBar/releases/download/v1.0.0-preview.1/QuotaBar-1.0.0-preview.1-macos-arm64.zip) · [Release notes](https://github.com/AI-GENE/QuotaBar/releases/tag/v1.0.0-preview.1)
+**[Download for Mac — Apple Silicon (.dmg)](https://github.com/AI-GENE/QuotaBar/releases/download/v1.0.0-preview.1/QuotaBar.dmg)** · [ZIP](https://github.com/AI-GENE/QuotaBar/releases/download/v1.0.0-preview.1/QuotaBar.zip) · [Release notes](https://github.com/AI-GENE/QuotaBar/releases/tag/v1.0.0-preview.1)
 
 Developer preview: **not Apple-notarized**; macOS normally blocks quarantined downloads by default. Claude usage queries may fail. Read the release notes and requirements before installing.
 
@@ -24,6 +26,8 @@ The initial interface is in Chinese. Service logos adapt to the macOS menu-bar a
 
 The deployment target is macOS 14+. The initial downloadable build is Apple Silicon;
 it is tested on macOS 26.5, not on every supported macOS release. Building requires Swift 6.2+ and Xcode command-line tools.
+
+Open `QuotaBar.dmg` and drag QuotaBar into Applications. Quit any running older copy from its menu before opening the new application, to avoid duplicate menu-bar items.
 
 1. Sign in to the official Codex client. QuotaBar currently supports its file-based OAuth credentials at `$CODEX_HOME/auth.json` or `~/.codex/auth.json`. Keychain-only storage and API-key-only accounts are not supported.
 2. Install the official Claude Code CLI and sign in with your Claude subscription. QuotaBar looks for `claude` in `~/.local/bin`, `/opt/homebrew/bin`, or `/usr/local/bin`.
@@ -52,7 +56,9 @@ cd QuotaBar
 This runs the offline tests, builds the application, bundles its vector resources, and applies a local ad-hoc signature. The result is `dist/QuotaBar.app`. Copy that application to your Applications folder if desired. No signing credentials are included.
 Custom `CODEX_HOME` is read from the launch environment, not your shell profile when launched from Finder. Ad-hoc rebuilds may require re-enabling launch at login.
 
-To reproduce the DMG, ZIP and SHA-256 checksums, run `./package.sh`.
+To reproduce the DMG, ZIP and SHA-256 checksums, run `./package.sh` with Xcode command-line tools installed (`SetFile` and `GetFileInfo` are also used).
+The files are named `QuotaBar.dmg` and `QuotaBar.zip`; the release page identifies the version and architecture.
+The mounted disk and application carry the QuotaBar icon. The DMG file also receives a local Finder custom icon, but a normal web download may not preserve that file metadata.
 
 ## Privacy and security
 
