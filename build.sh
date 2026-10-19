@@ -20,6 +20,7 @@ mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources" dist
 cp "$scratch/release/QuotaBar" "$app/Contents/MacOS/QuotaBar"
 cp Info.plist "$app/Contents/Info.plist"
 cp LICENSE "$app/Contents/Resources/LICENSE.txt"
+cp Assets/QuotaBar.icns "$app/Contents/Resources/QuotaBar.icns"
 ditto "$scratch/release/QuotaBar_QuotaCore.bundle" "$app/Contents/Resources/QuotaBar_QuotaCore.bundle"
 codesign --force --sign - --identifier io.github.ai-gene.quotabar "$app"
 codesign --verify --deep --strict "$app"

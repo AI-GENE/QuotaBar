@@ -1,5 +1,7 @@
 # QuotaBar
 
+<img src="Assets/QuotaBar.png" width="128" alt="QuotaBar app icon: interlocking ivory and blue gauge rings on midnight navy">
+
 A small, native macOS menu-bar utility for Claude Code and Codex usage limits.
 
 Two monochrome service marks. Two remaining percentages. No dashboard to keep open.
@@ -68,4 +70,4 @@ Tests use synthetic fixtures and require no credentials or provider requests. Ru
 
 ## License
 
-Application code: MIT. Service marks retain their owners' rights. See [brand notices](Sources/QuotaCore/Resources/BrandNotices.txt) for the Simple Icons and LobeHub asset sources and licensing.
+Application code and original app icon: MIT. The app icon was AI-generated. Service marks retain their owners' rights. See [brand notices](Sources/QuotaCore/Resources/BrandNotices.txt) for the Simple Icons and LobeHub asset sources and licensing.
