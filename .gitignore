@@ -1,0 +1,17 @@
+.build/
+.swiftpm/
+xcuserdata/
+dist/
+.DS_Store
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.mobileprovision
+auth.json
+.claude/
+.codex/
+*.log
+*.dSYM/
