@@ -1,0 +1,31 @@
+QuotaBar — macOS Apple Silicon developer preview
+
+中文
+1. 打开 DMG，将 QuotaBar 拖到 Applications。
+2. 若旧版 QuotaBar 正在运行，请先从菜单栏退出，避免出现两个图标。
+3. 按项目 README 完成官方 Codex 登录和 Claude Code 的首次初始化。
+4. 打开 QuotaBar；它位于菜单栏，不在 Dock 中常驻显示。
+
+重要限制
+这是本地临时签名、未经 Apple 公证的预览版。macOS 通常会阻止从网络下载的此类应用。
+不要关闭 Gatekeeper。若你的安全政策要求 Developer ID 或 Apple 公证，请先不要安装此预览版。
+提供 SHA-256 校验文件，但校验和只用于核对文件完整性，不能证明发布者身份。
+初版仅提供 Apple Silicon 下载；macOS 14 为构建目标，实际在 macOS 26.5 测试。
+此包修正了已复现的 Claude 查询参数兼容问题；官方 /usage 仍可能因其他原因加载失败。
+“†”表示历史数据，“—”表示缺少可用数据；两者都不应当作当前准确额度。
+本工具不是美元余额或 API 预付费余额查询器。
+
+English
+Drag QuotaBar into Applications. Quit any existing QuotaBar instance before opening it.
+Follow the repository README for official-client authentication and Claude Code first-run setup.
+The app lives in the menu bar rather than the Dock.
+
+This Apple Silicon developer preview is ad-hoc signed and NOT Apple-notarized.
+Expect Gatekeeper to block a quarantined download by default. Do not disable Gatekeeper.
+If your policy requires Developer ID signing or notarization, do not install this preview.
+SHA-256 checksums verify file integrity, not publisher identity.
+The build targets macOS 14+ and was tested on macOS 26.5 only.
+This build corrects a reproduced Claude query-mode compatibility issue; other /usage failures remain possible.
+“†” marks stale data; “—” means unavailable. Neither implies a current quota measurement.
+
+Source, requirements and license: https://github.com/AI-GENE/QuotaBar

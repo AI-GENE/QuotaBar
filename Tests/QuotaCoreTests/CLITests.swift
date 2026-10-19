@@ -73,3 +73,19 @@ import Testing
     #expect(environment["CLAUDE_CONFIG_DIR"] == inherited["CLAUDE_CONFIG_DIR"])
     #expect(environment["HOME"] == inherited["HOME"])
 }
+
+@Test func probeUsesGranularPrivacyWithoutForcingTrafficRestriction() {
+    let environment = ClaudeCLI.probeEnvironment([:], executable: "/opt/homebrew/bin/claude")
+    #expect(environment["CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC"] == nil)
+    for key in ["DISABLE_TELEMETRY", "DISABLE_ERROR_REPORTING", "DISABLE_AUTOUPDATER", "DISABLE_FEEDBACK_COMMAND"] {
+        #expect(environment[key] == "1")
+    }
+}
+
+@Test func probePreservesExplicitUserPrivacyPreferences() {
+    let inherited = ["CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1", "DO_NOT_TRACK": "1", "DISABLE_TELEMETRY": "0"]
+    let environment = ClaudeCLI.probeEnvironment(inherited, executable: "/opt/homebrew/bin/claude")
+    for (key, value) in inherited {
+        #expect(environment[key] == value)
+    }
+}

@@ -182,7 +182,9 @@ public enum ClaudeCLI {
     static func probeEnvironment(_ inherited: [String: String], executable: String) -> [String: String] {
         let allowed = Set(["HOME", "USER", "LOGNAME", "TMPDIR", "CLAUDE_CONFIG_DIR",
             "HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "NO_PROXY", "http_proxy", "https_proxy", "all_proxy", "no_proxy",
-            "SSL_CERT_FILE", "SSL_CERT_DIR", "NODE_EXTRA_CA_CERTS"])
+            "SSL_CERT_FILE", "SSL_CERT_DIR", "NODE_EXTRA_CA_CERTS",
+            "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC", "DO_NOT_TRACK", "DISABLE_TELEMETRY",
+            "DISABLE_ERROR_REPORTING", "DISABLE_AUTOUPDATER", "DISABLE_FEEDBACK_COMMAND"])
         var environment = inherited.filter { allowed.contains($0.key) }
         // Finder/login-item launches do not source shell profiles. npm's CLI
         // wrapper needs node alongside the selected executable or in Homebrew.
@@ -192,7 +194,11 @@ public enum ClaudeCLI {
         environment["TERM"] = "xterm-256color"
         environment["LANG"] = "en_US.UTF-8"
         environment["LC_ALL"] = "en_US.UTF-8"
-        environment["CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC"] = "1"
+        // Avoid forcing the broad traffic switch: CLI initialization can then
+        // fail to load usage. Keep granular privacy defaults and user overrides.
+        for key in ["DISABLE_TELEMETRY", "DISABLE_ERROR_REPORTING", "DISABLE_AUTOUPDATER", "DISABLE_FEEDBACK_COMMAND"] {
+            if environment[key] == nil { environment[key] = "1" }
+        }
         return environment
     }
 }

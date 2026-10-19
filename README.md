@@ -6,6 +6,10 @@ A small, native macOS menu-bar utility for Claude Code and Codex usage limits.
 
 Two monochrome service marks. Two remaining percentages. No dashboard to keep open.
 
+**[Download for Mac — Apple Silicon (.dmg)](https://github.com/AI-GENE/QuotaBar/releases/download/v1.0.0-preview.1/QuotaBar-1.0.0-preview.1-macos-arm64.dmg)** · [ZIP](https://github.com/AI-GENE/QuotaBar/releases/download/v1.0.0-preview.1/QuotaBar-1.0.0-preview.1-macos-arm64.zip) · [Release notes](https://github.com/AI-GENE/QuotaBar/releases/tag/v1.0.0-preview.1)
+
+Developer preview: **not Apple-notarized**; macOS normally blocks quarantined downloads by default. Claude usage queries may fail. Read the release notes and requirements before installing.
+
 ## What it shows
 
 - Claude on the left, Codex on the right: **weekly remaining usage**, not dollars or API credits.
@@ -48,12 +52,15 @@ cd QuotaBar
 This runs the offline tests, builds the application, bundles its vector resources, and applies a local ad-hoc signature. The result is `dist/QuotaBar.app`. Copy that application to your Applications folder if desired. No signing credentials are included.
 Custom `CODEX_HOME` is read from the launch environment, not your shell profile when launched from Finder. Ad-hoc rebuilds may require re-enabling launch at login.
 
+To reproduce the DMG, ZIP and SHA-256 checksums, run `./package.sh`.
+
 ## Privacy and security
 
 QuotaBar has no developer-operated server, analytics, or telemetry. It does make authenticated provider requests:
 
 - **Codex:** reads the existing OAuth access token and account ID into memory, then sends them only to the fixed HTTPS usage endpoint on `chatgpt.com`. Redirects, persistent cookies, and HTTP caches are disabled. QuotaBar does not refresh or rewrite credentials.
 - **Claude:** invokes the official local CLI's built-in `/usage` command in the dedicated Probe directory, with tools, Chrome integration, customizations, MCP servers, and startup remote control disabled. QuotaBar does not read Claude's Keychain item or receive the token. The CLI authenticates and contacts its own services; its own session metadata may be written under its normal settings.
+- The Claude probe defaults to separate telemetry, error-reporting, auto-update and feedback controls instead of forcing the broad nonessential-traffic switch. Explicit inherited privacy settings are preserved. This avoids a reproduced usage-loading compatibility problem with Claude Code 2.1.303; it does not guarantee provider availability.
 - Captured usage-query output is held in memory, bounded, and never written by QuotaBar. Debug `--check` output contains usage values and fixed error messages, not tokens or account identifiers. Usage values and reset times are still personal data; redact them before sharing diagnostics.
 - Login, credential rotation, Keychain prompts, and security decisions remain with the official clients and the user. Never paste tokens into QuotaBar issues.
 
